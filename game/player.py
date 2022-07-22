@@ -5,7 +5,7 @@ class Portal(Entity):
     def __init__(self, type, position=(0,0,0)): # type 1 = blue, 2 = orange
         super().__init__(
             model='quad',
-            texture='portal',
+            texture='white_cube',
             position=position,
             color=color.white,
             scale=Vec2(1.8,2.77),
@@ -18,15 +18,19 @@ class Portal(Entity):
         cam.reparentTo(camera)
 
         self.texture = Texture(buffer_texture)
-        self.view = Entity(model='quad', scale=self.scale,
-                           position=self.position)
-        self.view.position.z += 1
+        # self.view = Entity(model='quad', scale=self.scale,
+        #                    position=self.position)
+        # self.view.position.z = self.position.z + 1
         if type == 1:
-            self.view.color = color.blue
+            self.color = color.blue
         elif type == 2:
-            self.view.color = color.orange
+            self.color = color.orange
 
-        # Entity(model='quad', scale=self.scale,position=position)
+    def on_enable(self):
+        Audio('portal_open1.wav').play()
+    
+    def on_disable(self):
+        Audio('portal_close1.wav').play()
 
 class PortalGun(Entity):
     def __init__(self, model_detail=2):
