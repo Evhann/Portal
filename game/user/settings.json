@@ -1,0 +1,8 @@
+{
+    "graphics": {
+        "fullscreen": 0,
+        "vsync": 0,
+        "texture_filtering": "bilinear",
+        "model_detail": 1
+    }
+}
