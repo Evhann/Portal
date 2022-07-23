@@ -43,22 +43,26 @@ class PortalGun(Entity):
             rotation=(-10,55,20),
             origin=(-12,9,-6)
         )
-        # if model_detail == 1:
-        #     self.model == "portalgun_low"
-        # else:
-        #     self.model == "portalgun"
+        if model_detail == 1:
+            self.model = "portalgun_low"
+            self.texture = "portalgun_low"
+        else:
+            self.model = "portalgun"
+            self.texture = "portalgun"
+
         self.walls = portal_surfaces
 
     def input(self, key):
         for wall in self.walls:
             if wall.hovered:
                 if key == 'left mouse down':
-                    portal = Portal(type=1, position=mouse.world_point)
+                    blue_portal = Portal(type=1, position=mouse.world_point)
                     Audio('portalgun_shoot_blue1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new blue portal at "+str(portal.position))
                     
                 if key == 'right mouse down':
-                    portal = Portal(type=2, position=mouse.world_point)
+                    orange_portal = Portal(type=2, position=mouse.world_point)
+                    orange_portal.rotation = wall.rotation
                     Audio('portalgun_shoot_red1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new orange portal at "+str(portal.position))
 
