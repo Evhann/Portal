@@ -60,14 +60,14 @@ class Player(Entity):
         camera.parent = self.camera_pivot
         camera.position = (0,0,0)
         camera.rotation = (0,0,0)
-        camera.fov = 90
+        camera.fov = 100
         mouse.locked = True
         self.mouse_sensitivity = Vec2(50, 50)
 
         self.gravity = 1
         self.grounded = False
-        self.jump_height = 1.5
-        self.jump_up_duration = .5
+        self.jump_height = 2.0
+        self.jump_up_duration = .25
         self.fall_after = .29 # will interrupt jump up
         self.jumping = False
         self.air_time = 0
