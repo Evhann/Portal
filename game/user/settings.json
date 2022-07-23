@@ -10,5 +10,9 @@
         "move_backward": "s",
         "move_left": "a",
         "move_right": "d"
+    },
+
+    "audio": {
+        "global_volume": 100
     }
 }

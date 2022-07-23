@@ -28,10 +28,10 @@ class Portal(Entity):
             self.color = color.orange
 
     def on_enable(self):
-        Audio('portal_open1.wav').play()
+        Audio('portal_open1.wav', volume=SETTINGS.audio.global_volume).play()
     
     def on_disable(self):
-        Audio('portal_close1.wav').play()
+        Audio('portal_close1.wav', volume=SETTINGS.audio.global_volume).play()
 
 class PortalGun(Entity):
     def __init__(self, portal_surfaces: list, model_detail=2):
@@ -54,12 +54,12 @@ class PortalGun(Entity):
             if wall.hovered:
                 if key == 'left mouse down':
                     portal = Portal(type=1, position=mouse.world_point)
-                    Audio('portalgun_shoot_blue1.wav').play()
+                    Audio('portalgun_shoot_blue1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new blue portal at "+str(portal.position))
                     
                 if key == 'right mouse down':
                     portal = Portal(type=2, position=mouse.world_point)
-                    Audio('portalgun_shoot_red1.wav').play()
+                    Audio('portalgun_shoot_red1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new orange portal at "+str(portal.position))
 
 

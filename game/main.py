@@ -106,8 +106,8 @@ if debug_mode:
 
 if debug_mode:
     print("playing assets/voices/glados_welcome_00.wav")
-Audio("glados_welcome_00.wav").play()
+Audio("glados_welcome_00.wav", volume=SETTINGS.audio.global_volume).play()
 
-Audio("ambient_loop1.wav", loop=True).play()
+Audio("ambient_loop1.wav", loop=True, volume=SETTINGS.audio.global_volume).play()
 
 app.run()
