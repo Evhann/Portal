@@ -12,6 +12,7 @@ from cube import Cube
 from core import Core
 from radio import Radio
 from button import Button
+from potatos import PotatOS
 
 portal_surfaces = []
 
@@ -88,7 +89,7 @@ door = Entity(model='door', texture='door', position=(-5,0.55,-19.15),
               scale=0.03)
 
 player = Player()
-gun = PortalGun(portal_surfaces)
+gun = PortalGun(portal_surfaces, model_detail=SETTINGS.graphics.model_detail)
 
 Button(player, position=(10,0.7,8))
 
@@ -96,6 +97,8 @@ Button(player, position=(10,0.7,8))
 # Portal(position=(1.3,1.9,-19.499), type=2) # create a orange portal
 
 Entity(model="portal_frame", texture="portal_frame", scale=0.026, position=(1.1,2,-19.31))
+
+PotatOS(position=(-10,1.1,0))
 
 if debug_mode:
     for e in scene.entities:
