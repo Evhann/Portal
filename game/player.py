@@ -46,9 +46,6 @@ class PortalGun(Entity):
         if model_detail == 1:
             self.model = "portalgun_low"
             self.texture = "portalgun_low"
-        else:
-            self.model = "portalgun"
-            self.texture = "portalgun"
 
         self.walls = portal_surfaces
 
