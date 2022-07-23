@@ -13,6 +13,8 @@ from core import Core
 from radio import Radio
 from button import Button
 
+portal_surfaces = []
+
 window.title = "Portal"
 app = Ursina()
 window.borderless = False
@@ -55,6 +57,13 @@ frame = Entity(model="portal_frame", texture="portal_frame", scale=0.026, positi
 incinerator = Entity(model='glados_aperturedoor', texture='glados_aperturedoor',
                      position=(10,.8,0), scale=0.03)
 
+portal_surfaces.append(wall1)
+portal_surfaces.append(wall2)
+portal_surfaces.append(wall3)
+portal_surfaces.append(wall4)
+portal_surfaces.append(ceiling)
+portal_surfaces.append(ground)
+
 Core(position=(10,1,3), type=1)
 Core(position=(10,2,3), type=2)
 Core(position=(10,3,3), type=3)
@@ -79,12 +88,12 @@ door = Entity(model='door', texture='door', position=(-5,0.55,-19.15),
               scale=0.03)
 
 player = Player()
-gun = PortalGun()
+gun = PortalGun(portal_surfaces)
 
 Button(player, position=(10,0.7,8))
 
-Portal(position=(-1.5,1.9,-19.499), type=1) # create a blue portal
-Portal(position=(1.3,1.9,-19.499), type=2) # create a orange portal
+# Portal(position=(-1.5,1.9,-19.499), type=1) # create a blue portal
+# Portal(position=(1.3,1.9,-19.499), type=2) # create a orange portal
 
 Entity(model="portal_frame", texture="portal_frame", scale=0.026, position=(1.1,2,-19.31))
 

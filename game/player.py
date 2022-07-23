@@ -34,7 +34,7 @@ class Portal(Entity):
         Audio('portal_close1.wav').play()
 
 class PortalGun(Entity):
-    def __init__(self, model_detail=2):
+    def __init__(self, portal_surfaces: list, model_detail=2):
         super().__init__(
             parent=camera.ui,
             model='portalgun',
@@ -45,6 +45,20 @@ class PortalGun(Entity):
         )
         # if model_detail == 1:
         #     self.model == "portalgun_low"
+        # else:
+        #     self.model == "portalgun"
+        self.walls = portal_surfaces
+
+    def input(self, key):
+        for wall in self.walls:
+            if wall.hovered:
+                if key == 'left mouse down':
+                    portal = Portal(type=1, position=mouse.world_point)
+                    print("new blue portal at "+str(portal.position))
+                    
+                if key == 'right mouse down':
+                    portal = Portal(type=2, position=mouse.world_point)
+                    print("new orange portal at "+str(portal.position))
 
 
 """
@@ -90,8 +104,8 @@ class Player(Entity):
         self.camera_pivot.rotation_x= clamp(self.camera_pivot.rotation_x, -90, 90)
 
         self.direction = Vec3(
-            self.forward * (held_keys[str(SETTINGS.keyboard.move_forward)] - held_keys[str(SETTINGS.keyboard.move_backward)]),
-            + self.right * (held_keys['d'] - held_keys['a'])
+            self.forward * (held_keys[str(SETTINGS.keyboard.move_forward)] - held_keys[str(SETTINGS.keyboard.move_backward)])
+            + self.right * (held_keys[str(SETTINGS.keyboard.move_right)] - held_keys[str(SETTINGS.keyboard.move_left)])
             ).normalized()
 
         feet_ray = raycast(self.position+Vec3(0,0.5,0), self.direction, ignore=(self,), distance=.5, debug=False)
