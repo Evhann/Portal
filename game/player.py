@@ -1,5 +1,6 @@
 from ursina import *
 from ursina import curve
+from settings import SETTINGS
 
 class Portal(Entity):
     def __init__(self, type, position=(0,0,0)): # type 1 = blue, 2 = orange
@@ -89,7 +90,7 @@ class Player(Entity):
         self.camera_pivot.rotation_x= clamp(self.camera_pivot.rotation_x, -90, 90)
 
         self.direction = Vec3(
-            self.forward * (held_keys['w'] - held_keys['s'])
+            self.forward * (held_keys[str(SETTINGS.keyboard.move_forward)] - held_keys[str(SETTINGS.keyboard.move_backward)]),
             + self.right * (held_keys['d'] - held_keys['a'])
             ).normalized()
 

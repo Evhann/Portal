@@ -4,5 +4,9 @@
         "vsync": 0,
         "texture_filtering": "bilinear",
         "model_detail": 1
+    },
+    "keyboard": {
+        "move_forward": "w",
+        "move_backward": "s"
     }
 }
