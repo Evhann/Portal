@@ -76,6 +76,9 @@ class PortalGun(Entity):
             else:
                 if key == 'left mouse down':
                     Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
+                if self.type == 2:
+                    if key == 'right mouse down':
+                        Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
 
 
 """
