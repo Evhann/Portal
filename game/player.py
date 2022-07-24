@@ -34,7 +34,7 @@ class Portal(Entity):
         Audio('portal_close1.wav', volume=SETTINGS.audio.global_volume).play()
 
 class PortalGun(Entity):
-    def __init__(self, portal_surfaces: list, model_detail=2):
+    def __init__(self, portal_surfaces: list, model_detail=2, type=2): # type 1 = blue portal only, 2 = both
         super().__init__(
             parent=camera.ui,
             model='portalgun',
@@ -49,6 +49,8 @@ class PortalGun(Entity):
 
         self.walls = portal_surfaces
 
+        self.type = type
+
         self.blue_portal = None
         self.orange_portal = None
 
@@ -62,14 +64,15 @@ class PortalGun(Entity):
                         self.blue_portal.position = mouse.world_point
                     Audio('portalgun_shoot_blue1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new blue portal at "+str(portal.position))
-                    
-                if key == 'right mouse down':
-                    if self.orange_portal == None:
-                        self.orange_portal = Portal(type=2, position=mouse.world_point)
-                    else:
-                        self.orange_portal.position = mouse.world_point
-                    Audio('portalgun_shoot_red1.wav', volume=SETTINGS.audio.global_volume).play()
-                    # print("new orange portal at "+str(portal.position))
+                
+                if self.type == 2:
+                    if key == 'right mouse down':
+                        if self.orange_portal == None:
+                            self.orange_portal = Portal(type=2, position=mouse.world_point)
+                        else:
+                            self.orange_portal.position = mouse.world_point
+                        Audio('portalgun_shoot_red1.wav', volume=SETTINGS.audio.global_volume).play()
+                        # print("new orange portal at "+str(portal.position))
             else:
                 if key == 'left mouse down':
                     Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
