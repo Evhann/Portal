@@ -98,7 +98,7 @@ Button(player, position=(10,0.7,8))
 
 Entity(model="portal_frame", texture="portal_frame", scale=0.026, position=(1.1,2,-19.31))
 
-PotatOS(position=(-10,1.1,0))
+PotatOS(position=(-15,2,0))
 
 if debug_mode:
     for e in scene.entities:
