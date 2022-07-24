@@ -62,6 +62,9 @@ class PortalGun(Entity):
                     orange_portal.rotation = wall.rotation
                     Audio('portalgun_shoot_red1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new orange portal at "+str(portal.position))
+            else:
+                if key == 'left mouse down':
+                    Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
 
 
 """
