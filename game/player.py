@@ -67,7 +67,7 @@ class PortalGun(Entity):
                     Audio('portalgun_shoot_blue1.wav', volume=SETTINGS.audio.global_volume).play()
                     # print("new blue portal at "+str(portal.position))
                 
-                if self.type == 2:
+                if not self.type == 1:
                     if key == 'right mouse down':
                         if self.orange_portal == None:
                             self.orange_portal = Portal(type=2, position=mouse.world_point)
@@ -78,7 +78,7 @@ class PortalGun(Entity):
             else:
                 if key == 'left mouse down':
                     Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
-                if self.type == 2:
+                if not self.type == 1:
                     if key == 'right mouse down':
                         Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
 

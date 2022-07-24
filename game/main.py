@@ -89,7 +89,7 @@ door = Entity(model='door', texture='door', position=(-5,0.55,-19.15),
               scale=0.03)
 
 player = Player()
-gun = PortalGun(portal_surfaces, model_detail=SETTINGS.graphics.model_detail)
+gun = PortalGun(portal_surfaces, model_detail=SETTINGS.graphics.model_detail, type=2)
 
 Button(player, position=(10,0.7,8))
 
