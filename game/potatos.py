@@ -7,5 +7,6 @@ class PotatOS(Entity):
             texture='potatOS',
             position=position,
             scale=0.03,
-            color=color.white
+            color=color.white,
+            collider='box'
         )
