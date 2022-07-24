@@ -93,9 +93,6 @@ gun = PortalGun(portal_surfaces, model_detail=SETTINGS.graphics.model_detail)
 
 Button(player, position=(10,0.7,8))
 
-# Portal(position=(-1.5,1.9,-19.499), type=1) # create a blue portal
-# Portal(position=(1.3,1.9,-19.499), type=2) # create a orange portal
-
 Entity(model="portal_frame", texture="portal_frame", scale=0.026, position=(1.1,2,-19.31))
 
 PotatOS(position=(-15,2,0))
