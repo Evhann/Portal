@@ -13,6 +13,8 @@
     },
 
     "audio": {
+        "language": "english",
+        "captions": 0,
         "global_volume": 100
     }
 }
