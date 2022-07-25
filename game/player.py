@@ -10,7 +10,8 @@ class Portal(Entity):
             position=position,
             color=color.white,
             scale=Vec2(1.8,2.77),
-            double_sided=True
+            double_sided=True,
+            collider='box'
         )
         texture_buffer = base.win.makeTextureBuffer("", 0, 0)
         texture_buffer.setSort(-100)
@@ -34,7 +35,7 @@ class Portal(Entity):
         Audio('portal_close1.wav', volume=SETTINGS.audio.global_volume).play()
 
 class PortalGun(Entity):
-    def __init__(self, portal_surfaces: list, model_detail=2, type=2): # type 1 = blue portal only, 2 = both
+    def __init__(self, player: Entity, portal_surfaces: list, model_detail=2, type=2): # type 1 = blue portal only, 2 = both
         super().__init__(
             parent=camera.ui,
             model='portalgun',
@@ -48,6 +49,8 @@ class PortalGun(Entity):
             self.texture = "portalgun_low"
             self.scale = 0.2
             self.origin=(-5,0,0)
+
+        self.player = player
 
         self.walls = portal_surfaces
 
@@ -81,6 +84,13 @@ class PortalGun(Entity):
                 if not self.type == 1:
                     if key == 'right mouse down':
                         Audio('portal_invalid_surface3.wav', volume=SETTINGS.audio.global_volume).play()
+
+    def update(self):
+        if self.blue_portal != None and self.orange_portal != None:
+            if self.player.intersects(self.blue_portal).hit:
+                self.player.position = self.orange_portal.position
+            if self.player.intersects(self.orange_portal).hit:
+                self.player.position = self.blue_portal.position
 
 
 """
