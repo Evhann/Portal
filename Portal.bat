@@ -1,1 +1,1 @@
-python game/main.py
+call python game/main.py > "logs/latest.log" 2>&1
