@@ -1,6 +1,6 @@
 # Portal
 
-⚠This game is not [Portal](https://store.steampowered.com/app/400/Portal/)!⚠
+⚠This game is not the [Portal](https://store.steampowered.com/app/400/Portal/) source code!⚠
 
 A Portal clone made in Python using Ursina and Panda3D.
 
